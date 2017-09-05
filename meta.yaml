@@ -1,0 +1,64 @@
+{% set version = "0.1.0" %}
+
+package:
+  name: facets 
+  version: {{ version }}
+
+source:
+  git_url: git@git.creditx.com:marvin/sklearn-pandas.git
+  git_tag: v{{ version }}
+
+  #md5: 
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+  #  - sklearn-pandas = sklearn-pandas:main
+    #
+    # Would create an entry point called sklearn-pandas that calls sklearn-pandas.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 0
+  script: python setup.py install
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - protobuf
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - sklearn_pandas
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/PAIR-code/facets 
+  license: UNKNOWN
+  summary: 'Pandas integration with sklearn'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
